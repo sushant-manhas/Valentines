@@ -87,7 +87,7 @@ def main():
         for i, col in enumerate(cols):
             if i < len(image_files):
                 with col:
-                    img_path = os.path.join("images/couple_photos", image_files[i])
+                    img_path = os.path.join("images", image_files[i])
                     st.image(img_path, use_column_width=True, caption=f"Memory #{i+1}")
 
         # Love Letter
