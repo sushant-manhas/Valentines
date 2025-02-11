@@ -67,6 +67,7 @@ def main():
                     # Use matplotlib to draw rose
                     fig = draw_rose_matplotlib()
                     st.pyplot(fig)
+                    time.sleep(2)
                     st.session_state.accepted = True
                     st.experimental_rerun()
         
