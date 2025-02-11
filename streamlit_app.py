@@ -83,7 +83,7 @@ def main():
         st.page_link("streamlit_app.py", label="Go Back to Home", icon="🏠")
         st.markdown("<h2 class='memory-title'>Our Beautiful Memories 📸</h2>", unsafe_allow_html=True)
         cols = st.columns(3)
-        image_files = [f for f in os.listdir("images/couple_photos") if f.endswith(('.png', '.jpg'))]
+        image_files = [f for f in os.listdir("images") if f.endswith(('.png', '.jpg'))]
         
         for i, col in enumerate(cols):
             if i < len(image_files):
