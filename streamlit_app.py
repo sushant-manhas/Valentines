@@ -108,6 +108,8 @@ def main():
                 <source src="data:audio/mp3;base64,{base64.b64encode(audio_str).decode()}" type="audio/mp3">
             </audio>
             """, unsafe_allow_html=True)
+        
+        st.page_link("streamlit_app.py", label="Go Back to Home", icon="🏠")
 
 if __name__ == "__main__":
     main()
