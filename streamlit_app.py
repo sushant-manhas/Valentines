@@ -6,6 +6,7 @@ import time
 import os
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
+import numpy as np
 
 # Page setup
 st.set_page_config(
