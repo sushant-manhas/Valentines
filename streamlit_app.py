@@ -80,6 +80,7 @@ def main():
         st.balloons()
         
         # Photo Gallery
+        st.page_link("streamlit_app.py", label="Go Back to Home", icon="🏠")
         st.markdown("<h2 class='memory-title'>Our Beautiful Memories 📸</h2>", unsafe_allow_html=True)
         cols = st.columns(3)
         image_files = [f for f in os.listdir("images/couple_photos") if f.endswith(('.png', '.jpg'))]
@@ -109,7 +110,6 @@ def main():
             </audio>
             """, unsafe_allow_html=True)
         
-        st.page_link("streamlit_app.py", label="Go Back to Home", icon="🏠")
 
 if __name__ == "__main__":
     main()
