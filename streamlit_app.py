@@ -4,6 +4,8 @@ import base64
 from PIL import ImageGrab
 import time
 import os
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
 
 # Page setup
 st.set_page_config(
@@ -20,35 +22,25 @@ def inject_css():
 inject_css()
 
 # Turtle rose drawing function
-def draw_rose():
-    screen = turtle.Screen()
-    screen.bgcolor("#FFE6EE")
-    t = turtle.Turtle()
-    t.speed(10)
+# Rose drawing function using Matplotlib
+def draw_rose_matplotlib():
+    fig, ax = plt.subplots(figsize=(6, 6))
+    ax.set_xlim([-1.5, 1.5])
+    ax.set_ylim([-2, 1])
+    ax.axis('off')
     
-    # Stem
-    t.penup()
-    t.goto(0, -200)
-    t.pendown()
-    t.color("#228B22")
-    t.pensize(5)
-    t.left(90)
-    t.forward(200)
+    def heart_x(t):
+        return 16 * (np.sin(t)**3)
     
-    # Rose petals
-    t.penup()
-    t.goto(0, 0)
-    t.color("#FF007F")
-    t.begin_fill()
-    for _ in range(36):
-        t.forward(50)
-        t.left(45)
-        t.forward(50)
-        t.left(135)
-        t.left(10)
-    t.end_fill()
+    def heart_y(t):
+        return 13 * np.cos(t) - 5 * np.cos(2*t) - 2 * np.cos(3*t) - np.cos(4*t)
     
-    return screen
+    t = np.linspace(-np.pi, np.pi, 200)
+    x = heart_x(t) / 15  # Scaling down
+    y = heart_y(t) / 15 + 0.5  # Scaling down and shifting up
+    
+    ax.plot(x, y, color='red')
+    return fig
 
 # Main app logic
 def main():
@@ -71,8 +63,9 @@ def main():
         with col1:
             if st.button("YES 💖", type="primary", use_container_width=True):
                 with st.spinner("Growing our love..."):
-                    screen = draw_rose()
-                    time.sleep(2)
+                    # Use matplotlib to draw rose
+                    fig = draw_rose_matplotlib()
+                    st.pyplot(fig)
                     st.session_state.accepted = True
                     st.experimental_rerun()
         
