@@ -109,7 +109,7 @@ def main():
             </audio>
             """, unsafe_allow_html=True)
 
-        st.page_link("streamlit_app.py", label="Go Back to Home", icon="🏠")
+        # st.page_link("streamlit_app.py", label="Go Back to Home", icon="🏠")
         
 
 if __name__ == "__main__":
